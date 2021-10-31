@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="gemApp">
+<head>
+	<meta charset="utf-8">
+	<title>GEM</title>
+
+	<link rel="stylesheet" href="assets/css/base.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/angularjs-color-picker.min.css">
+	<link rel="stylesheet" href="assets/css/sweetalert.css">
+	<link rel="stylesheet" href="assets/css/ion.rangeSlider.css">
+	<link rel="stylesheet" href="assets/css/ion.rangeSlider.skinHTML5.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<script src="vendor/q.js"></script>
+	<script src="vendor/jquery.min.js"></script>
+	<script src="vendor/angular.min.js"></script>
+	<script src="vendor/angular-animate.min.js"></script>
+	<script src="vendor/angular-route.min.js"></script>
+	<script src="vendor/angular-messages.min.js"></script>
+	<script src="vendor/ngStorage.min.js"></script>
+	<script src="vendor/tinycolor-min.js"></script>
+	<script src="vendor/angularjs-color-picker.min.js"></script>
+	<script src="vendor/mustache.min.js"></script>
+	<script src="vendor/hjson.min.js"></script>
+	<script src="vendor/moment.min.js"></script>
+	<script src="vendor/sweetalert.min.js"></script>
+	<script src="vendor/ion.rangeSlider.min.js"></script>
+
+	<script src="app/main/module.js"></script>
+	<script src="app/main/controllers/main.js"></script>
+	<script src="app/main/controllers/hook.js"></script>
+	<script src="app/main/controllers/replays.js"></script>
+	<script src="app/main/controllers/settings.js"></script>
+	<script src="app/main/controllers/logs.js"></script>
+
+	<script src="app/main/filters/moment.js"></script>
+
+	<script src="app/main/directives/filePicker.js"></script>
+	<script src="app/main/directives/toggle.js"></script>
+	<script src="app/main/directives/group.js"></script>
+	<script src="app/main/directives/tooltip.js"></script>
+	<script src="app/main/directives/external.js"></script>
+	<script src="app/main/directives/ionRange.js"></script>
+	<script src="app/main/directives/ngLoad.js"></script>
+	<script src="app/main/directives/ngError.js"></script>
+
+	<script src="app/shared/directives/footer.js"></script>
+	<script src="app/shared/directives/checkbox.js"></script>
+
+	<script src="app/main/services/Cerebro.js"></script>
+	<script src="app/shared/services/Messenger.js"></script>
+</head>
+<body class="column">
+	<div class="column grow">
+		<nav class="row no-shrink">
+			<a href="#!/"><i class="fa fa-plug fa-fw"></i> Hooks</a>
+			<a href="#!/logs"><i class="fa fa-history fa-fw"></i> Logs</a>
+			<a href="#!/replays"><i class="fa fa-youtube-play fa-fw"></i> Replays</a>
+			<a href="#!/settings"><i class="fa fa-cog fa-fw"></i> Settings</a>
+		</nav>
+		<div class="column grow" style="padding: 10px; overflow: hidden" ng-view></div>
+	</div>
+</body>
+</html>

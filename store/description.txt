@@ -1,0 +1,5 @@
+<h3>Game Events Manager (GEM)</h3>
+Don't let it fool you with its simple appearance, this app merges the best features of Overwolf in one package.
+Select a game, an event and an action, it's that simple, from playing a sound to executing a lighting macro, your creativity is the limit.
+<h3>Supported Games</h3>
+SMITE, Warface, Robocraft, CS:GO, League of Legends, DOTA 2, Rocket League, World of Tanks and Overwatch

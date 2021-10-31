@@ -1,0 +1,53 @@
+<div id="content" class="grow">
+	<h6 class="legend">Settings</h6>
+	<div class="form-group">
+		<h6>Replays</h6>
+		<div class="form-group">
+			<toggle label="Toggle replay capture" checked="replayCaptureState" ng-click="toggleReplayCapture()">
+				<span>Toggles replay capture. Keep in mind that it consumes a lot of system resources.</span>
+			</toggle>
+		</div>
+		<div class="form-group">
+			<checkbox label="Enable replay capture when minimized" ng-model="settings.captureOnMinimize">
+				<span>Replay capture will be automatically turned on when GEM gets minimized.</span>
+			</checkbox>
+		</div>
+		<div class="form-group">
+			<checkbox label="Capture notifications" ng-model="settings.captureNotifications">
+				<span>Notifications will be displayed on the replay video.</span>
+			</checkbox>
+		</div>
+		<div class="form-group">
+			<external label="Video settings" href="overwolf://settings/capture"></external>
+		</div>
+	</div>
+	<div class="form-group">
+		<h6>Overlays</h6>
+		<div class="form-group">
+			<checkbox label="Keyboard and mouse" ng-model="settings.captureInputs">
+				<span>Your keystrokes and mouse clicks will be displayed on the replay video.</span>
+			</checkbox>
+		</div>
+	</div>
+	<div class="form-group">
+		<h6>Hotkeys ( only available in-game )</h6>
+		<div class="form-group">
+			<external label="Toggle GEM ( {{toggleGEMHotkey}} )" href="overwolf://settings/hotkeys#toggle-GEM">
+				<span>Toggles GEM visibility. It will run and display GEM if it isn't running.</span>
+			</external>
+		</div>
+		<div class="form-group">
+			<external label="Toggle replay capture ( {{toggleCaptureHotkey}} )" href="overwolf://settings/hotkeys#toggle-capture">
+				<span>Toggles replay capture.</span>
+			</external>
+		</div>
+		<div class="form-group">
+			<external label="Instant replay ( {{instantReplayHotkey}} )" href="overwolf://settings/hotkeys#instant-replay">
+				<span>Replays the last 20 seconds of your game.</span>
+			</external>
+		</div>
+	</div>
+</div>
+<footer>
+	<button class="btn" ng-click="save()"><i class="fa fa-floppy-o fa-fw"></i> Save</button>
+</footer>

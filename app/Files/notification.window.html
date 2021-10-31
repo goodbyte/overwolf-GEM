@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="gemApp">
+<head>
+	<meta charset="utf-8">
+	<title>GEM - Notifications</title>
+
+	<link rel="stylesheet" href="assets/css/base.css">
+	<link rel="stylesheet" href="assets/css/noty.css">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/noty_theme.css">
+
+	<script src="vendor/q.js"></script>
+	<script src="vendor/angular.min.js"></script>
+	<script src="vendor/ngStorage.min.js"></script>
+	<script src="vendor/noty.min.js"></script>
+
+	<script>
+		angular
+			.module('gemApp', ['ngStorage'])
+			.controller('MainCtrl', function($scope, $localStorage, Messenger) {
+
+				var notificationsHandlers = [];
+
+				$scope.$on('message-received', messageReceived);
+
+				function messageReceived(event, message) {
+					switch (message.id) {
+						case 'showNotification':
+							var notification = JSON.parse(message.content);
+							var base = {
+								text: '',
+								theme: 'gem',
+								animation: {
+									open: 'animated fadeInRight',
+									close: 'animated fadeOutDown'
+								},
+								timeout: 5000
+							};
+							angular.extend(base, notification);
+							if (base.mode === 'sticky') {
+								var noty = notificationsHandlers[notification.id];
+								if (noty && !noty.closed) noty.setText(notification.text);
+								else {
+									base.timeout = false;
+									notificationsHandlers[notification.id] = new Noty(base);
+									notificationsHandlers[notification.id].show();
+								}
+							} else {
+								new Noty(base).show();
+							}
+							break;
+						case 'updateCaptureNotifications':
+							setWindowStreamingMode();
+							break;
+						default:
+							console.warn('Unmanaged message', message);
+					}
+				}
+
+				function setWindow() {
+
+					var width = screen.width;
+
+					overwolf.games.getRunningGameInfo(function (gameInfo) {
+						if (gameInfo) {
+							width = gameInfo.width;
+						}
+						overwolf.windows.changeSize('NotificationWindow', 400, 500);
+						overwolf.windows.changePosition('NotificationWindow', width - 400, 0);
+					});
+				}
+
+				function setWindowStreamingMode() {
+					q(overwolf.windows.getCurrentWindow)
+						.then(function(result) {
+							var mode = $localStorage.settings.captureNotifications ? 'Always' : 'Never';
+							overwolf.streaming.setWindowStreamingMode(result.window.id, mode);
+						});
+				}
+
+				overwolf.games.onGameInfoUpdated.addListener(setWindow);
+
+				setWindow();
+				setWindowStreamingMode();
+
+			});
+	</script>
+	<script src="app/shared/services/Messenger.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+</body>
+</html>

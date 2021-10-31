@@ -1,0 +1,103 @@
+{
+	"manifest_version": 1,
+	"type": "WebApp",
+	"meta": {
+		"name": "GEM",
+		"version": "3.0.2",
+		"minimum-overwolf-version": "0.103.4",
+		"author": "goodbyte",
+		"icon": "IconMouseOver.png",
+		"icon_gray": "IconMouseNormal.png",
+		"description": "Game Events Manager (GEM)"
+	},
+	"permissions": ["Clipboard", "Extensions", "DesktopStreaming", "FileSystem", "GameControl", "GameInfo", "Hotkeys", "LogitechLed", "Media", "Profile", "Streaming"],
+	"data": {
+		"start_window": "MainWindow",
+		"windows": {
+			"MainWindow": {
+				"file": "Files/main.window.html",
+				"resizable": true,
+				"size": {
+					"width": 500,
+					"height": 550
+				},
+				"min_size": {
+					"width": 500,
+					"height": 550
+				},
+				"block_top_window_navigation": true,
+				"popup_blocker": true
+			},
+			"MacroWindow": {
+				"file": "Files/macro.window.html",
+				"resizable": true,
+				"size": {
+					"width": 700,
+					"height": 740
+				},
+				"min_size": {
+					"width": 685,
+					"height": 677
+				},
+				"block_top_window_navigation": true,
+				"popup_blocker": true
+			},
+			"PlayerWindow": {
+				"file": "Files/player.window.html",
+				"grab_keyboard_focus": true,
+				"size": {
+					"width": 1280,
+					"height": 720
+				},
+				"block_top_window_navigation": true,
+				"popup_blocker": true
+			},
+			"NotificationWindow": {
+				"file": "Files/notification.window.html",
+				"transparent": true,
+				"show_in_taskbar": false,
+				"grab_focus_on_desktop": false,
+				"size": {
+					"width": 400,
+					"height": 500
+				},
+				"block_top_window_navigation": true,
+				"popup_blocker": true
+			},
+			"InputWindow": {
+				"file": "Files/input.window.html",
+				"transparent": true,
+				"show_in_taskbar": false,
+				"show_only_on_stream": true,
+				"in_game_only": true,
+				"size": {
+					"width": 653,
+					"height": 142
+				},
+				"block_top_window_navigation": true,
+				"popup_blocker": true
+			}
+		},
+		"game_events": [8134, 7784, 10480, 7764, 5426, 7314, 10798, 6365, 10844],
+		"hotkeys": {
+			"toggle-GEM": {
+				"title": "Toggle GEM",
+				"action-type": "toggle",
+				"default": "Shift+F7",
+				"passthrough": true
+			},
+			"toggle-capture": {
+				"title": "Toggle capture",
+				"action-type": "custom",
+				"default": "Shift+F8",
+				"passthrough": true
+			},
+			"instant-replay": {
+				"title": "Instant replay",
+				"action-type": "custom",
+				"default": "Shift+F9",
+				"passthrough": true
+			}
+		}
+	}
+}
